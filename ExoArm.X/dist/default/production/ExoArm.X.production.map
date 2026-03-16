@@ -6,7 +6,7 @@ Linker command line:
   --edf=C:\Program Files\Microchip\xc8\v3.10\pic\dat\20250813170317_en.msgs \
   -cs -h+dist/default/production\ExoArm.X.production.sym \
   --cmf=dist/default/production\ExoArm.X.production.cmf -z -Q16F1788 \
-  -oC:\Users\STEFY\AppData\Local\Temp\xcAsr9g.0\driver_tmp_3.o \
+  -oC:\Users\STEFY\AppData\Local\Temp\xcAshv4.0\driver_tmp_3.o \
   -pisrVect=04h -presetVect=00h -pcode=08h --fixupoverflow=error \
   -ver=XC8 PIC(R) Assembler --fixupoverflow=lstwarn \
   -Mdist/default/production/ExoArm.X.production.map -E1 -ACODE=00h-07FFhx8 \
@@ -49,13 +49,13 @@ build/default/production/Main.o
                 config                             8007     8007        2        0       4
                 isrVect                               4        4        1        8       0
                 resetVect                             0        0        1        0       0
-                code                                  8        8       4F       10       0
+                code                                  8        8       65       10       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
                 isrVect                               4        4        1         0
                 resetVect                             0        0        1         0
-                code                                  8        8       4F         0
+                code                                  8        8       65         0
 
         CLASS   STRCODE        
 
@@ -202,7 +202,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 resetVect                      000000  000001  000001         0       0  CODE        2
                 isrVect                        000004  000001  000005         8       0  CODE        2
-                code                           000008  00004F  000057        10       0  CODE        2
+                code                           000008  000065  00006D        10       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
@@ -237,15 +237,15 @@ UNUSED ADDRESS RANGES
         BIGRAM           02000-027EF             7F0           1
         CODE             00001-00003               3           2
                          00005-00007               3
-                         00057-03FFF             800
+                         0006D-03FFF             800
         COMMON           00070-0007F              10           1
         CONST            00001-00003               3           2
                          00005-00007               3
-                         00057-03FFF             100
+                         0006D-03FFF             100
         EEDATA           0F000-0F0FF             100           2
         ENTRY            00001-00003               3           2
                          00005-00007               3
-                         00057-03FFF             100
+                         0006D-03FFF             100
         IDLOC            08000-08003               4           2
         RAM              00020-0006F              50           1
                          000A0-000EF              50
@@ -307,51 +307,51 @@ UNUSED ADDRESS RANGES
         SFR9             00480-0049F              20           1
         STRCODE          00001-00003               3           2
                          00005-00007               3
-                         00057-03FFF            3FA9
+                         0006D-03FFF            3F93
         STRING           00001-00003               3           2
                          00005-00007               3
-                         00057-03FFF             100
+                         0006D-03FFF             100
 
                                   Symbol Table
 
-__H__absolute__ __absolute__ 00000  __Hcode         code         00057
-__Hconfig       config       08009  __Hdata         data         000AE
-__Hedata        edata        000AE  __HisrVect      isrVect      00005
-__HresetVect    resetVect    00001  __Hspace_0      (abs)        000AE
+__H__absolute__ __absolute__ 00000  __Hcode         code         0006D
+__Hconfig       config       08009  __Hdata         data         000DA
+__Hedata        edata        000DA  __HisrVect      isrVect      00005
+__HresetVect    resetVect    00001  __Hspace_0      (abs)        000DA
 __Hspace_1      (abs)        00000  __Hspace_3      (abs)        00000
-__Hspace_4      (abs)        10010  __Hudata        udata        000AE
-__Hudata_bank0  udata_bank0  000AE  __Hudata_bank1  udata_bank1  000AE
-__Hudata_bank10 udata_bank10 000AE  __Hudata_bank11 udata_bank11 000AE
-__Hudata_bank12 udata_bank12 000AE  __Hudata_bank13 udata_bank13 000AE
-__Hudata_bank14 udata_bank14 000AE  __Hudata_bank15 udata_bank15 000AE
-__Hudata_bank16 udata_bank16 000AE  __Hudata_bank17 udata_bank17 000AE
-__Hudata_bank18 udata_bank18 000AE  __Hudata_bank19 udata_bank19 000AE
-__Hudata_bank2  udata_bank2  000AE  __Hudata_bank20 udata_bank20 000AE
-__Hudata_bank21 udata_bank21 000AE  __Hudata_bank22 udata_bank22 000AE
-__Hudata_bank23 udata_bank23 000AE  __Hudata_bank24 udata_bank24 000AE
-__Hudata_bank25 udata_bank25 000AE  __Hudata_bank3  udata_bank3  000AE
-__Hudata_bank4  udata_bank4  000AE  __Hudata_bank5  udata_bank5  000AE
-__Hudata_bank6  udata_bank6  000AE  __Hudata_bank7  udata_bank7  000AE
-__Hudata_bank8  udata_bank8  000AE  __Hudata_bank9  udata_bank9  000AE
-__Hudata_shr    udata_shr    000AE  __L__absolute__ __absolute__ 00000
+__Hspace_4      (abs)        10010  __Hudata        udata        000DA
+__Hudata_bank0  udata_bank0  000DA  __Hudata_bank1  udata_bank1  000DA
+__Hudata_bank10 udata_bank10 000DA  __Hudata_bank11 udata_bank11 000DA
+__Hudata_bank12 udata_bank12 000DA  __Hudata_bank13 udata_bank13 000DA
+__Hudata_bank14 udata_bank14 000DA  __Hudata_bank15 udata_bank15 000DA
+__Hudata_bank16 udata_bank16 000DA  __Hudata_bank17 udata_bank17 000DA
+__Hudata_bank18 udata_bank18 000DA  __Hudata_bank19 udata_bank19 000DA
+__Hudata_bank2  udata_bank2  000DA  __Hudata_bank20 udata_bank20 000DA
+__Hudata_bank21 udata_bank21 000DA  __Hudata_bank22 udata_bank22 000DA
+__Hudata_bank23 udata_bank23 000DA  __Hudata_bank24 udata_bank24 000DA
+__Hudata_bank25 udata_bank25 000DA  __Hudata_bank3  udata_bank3  000DA
+__Hudata_bank4  udata_bank4  000DA  __Hudata_bank5  udata_bank5  000DA
+__Hudata_bank6  udata_bank6  000DA  __Hudata_bank7  udata_bank7  000DA
+__Hudata_bank8  udata_bank8  000DA  __Hudata_bank9  udata_bank9  000DA
+__Hudata_shr    udata_shr    000DA  __L__absolute__ __absolute__ 00000
 __Lcode         code         00008  __Lconfig       config       00000
-__Ldata         data         000AE  __Ledata        edata        000AE
+__Ldata         data         000DA  __Ledata        edata        000DA
 __LisrVect      isrVect      00004  __LresetVect    resetVect    00000
 __Lspace_0      (abs)        00000  __Lspace_1      (abs)        00000
 __Lspace_3      (abs)        00000  __Lspace_4      (abs)        00000
-__Ludata        udata        000AE  __Ludata_bank0  udata_bank0  000AE
-__Ludata_bank1  udata_bank1  000AE  __Ludata_bank10 udata_bank10 000AE
-__Ludata_bank11 udata_bank11 000AE  __Ludata_bank12 udata_bank12 000AE
-__Ludata_bank13 udata_bank13 000AE  __Ludata_bank14 udata_bank14 000AE
-__Ludata_bank15 udata_bank15 000AE  __Ludata_bank16 udata_bank16 000AE
-__Ludata_bank17 udata_bank17 000AE  __Ludata_bank18 udata_bank18 000AE
-__Ludata_bank19 udata_bank19 000AE  __Ludata_bank2  udata_bank2  000AE
-__Ludata_bank20 udata_bank20 000AE  __Ludata_bank21 udata_bank21 000AE
-__Ludata_bank22 udata_bank22 000AE  __Ludata_bank23 udata_bank23 000AE
-__Ludata_bank24 udata_bank24 000AE  __Ludata_bank25 udata_bank25 000AE
-__Ludata_bank3  udata_bank3  000AE  __Ludata_bank4  udata_bank4  000AE
-__Ludata_bank5  udata_bank5  000AE  __Ludata_bank6  udata_bank6  000AE
-__Ludata_bank7  udata_bank7  000AE  __Ludata_bank8  udata_bank8  000AE
-__Ludata_bank9  udata_bank9  000AE  __Ludata_shr    udata_shr    000AE
+__Ludata        udata        000DA  __Ludata_bank0  udata_bank0  000DA
+__Ludata_bank1  udata_bank1  000DA  __Ludata_bank10 udata_bank10 000DA
+__Ludata_bank11 udata_bank11 000DA  __Ludata_bank12 udata_bank12 000DA
+__Ludata_bank13 udata_bank13 000DA  __Ludata_bank14 udata_bank14 000DA
+__Ludata_bank15 udata_bank15 000DA  __Ludata_bank16 udata_bank16 000DA
+__Ludata_bank17 udata_bank17 000DA  __Ludata_bank18 udata_bank18 000DA
+__Ludata_bank19 udata_bank19 000DA  __Ludata_bank2  udata_bank2  000DA
+__Ludata_bank20 udata_bank20 000DA  __Ludata_bank21 udata_bank21 000DA
+__Ludata_bank22 udata_bank22 000DA  __Ludata_bank23 udata_bank23 000DA
+__Ludata_bank24 udata_bank24 000DA  __Ludata_bank25 udata_bank25 000DA
+__Ludata_bank3  udata_bank3  000DA  __Ludata_bank4  udata_bank4  000DA
+__Ludata_bank5  udata_bank5  000DA  __Ludata_bank6  udata_bank6  000DA
+__Ludata_bank7  udata_bank7  000DA  __Ludata_bank8  udata_bank8  000DA
+__Ludata_bank9  udata_bank9  000DA  __Ludata_shr    udata_shr    000DA
 __S0            (abs)        00000  __S1            (abs)        00000
 __S3            (abs)        00000  

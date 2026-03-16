@@ -6,8 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "Main.s" 2
 ;Brandon Barrera
-;Killdate Products?
-;Exo arm - Solenoid controller
+;Idaho State University
+;Exo arm -
+;Solenoid controller
 ;12/20/2025
 
 ; PIC16F1788 Configuration Bit Settings
@@ -9642,13 +9643,14 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 8 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/xc.inc" 2 3
-# 34 "Main.s" 2
+# 35 "Main.s" 2
 
 
 BANKSAVE EQU 0x020
 WSAVE EQU 0x021
-ADCHIGH EQU 0x022
-ADCLOW EQU 0x023
+PREVIOUSPOSITION EQU 0x024
+CURRENTPOSITION EQU 0x025
+TESTBITS EQU 0x026
 
 ;Reset Vector
 PSECT resetVect,class=CODE,delta=2 ;-Wl,-presetVect=00h
@@ -9725,17 +9727,52 @@ Setup:
     BCF PIR1, 6 ;Clears flag to ensure known state, ADCIF
     MOVLW 0xC0 ;Enables global and peripheral interrupts
     MOVWF INTCON ;Configures Allowed interrupts, Globals & Preriphrials
+    CLRF CURRENTPOSITION
+    CLRF PREVIOUSPOSITION
 
     ;----------------------------------------------------------
     GOTO Main ;End of Setup
 
 Main:
     MOVLB 0x00 ;Bank 0
+    BTFSC PORTA, 1 ;Is up button pressed?
+    GOTO Reposition ;Yes
+    BTFSC PORTA, 2 ;Is down button pressed?
+    GOTO Reposition ;Yes
+
+    MOVLW 0x20 ;Set Lower bound
+    SUBWF PREVIOUSPOSITION, 0 ;Subtract tolerance
+    SUBWF CURRENTPOSITION, 0 ;Compare
+    BTFSS STATUS, 0 ;Is Previous less than or equal to Current?
+    BSF TESTBITS, 1 ;NO, MORE THAN
+
+    MOVLW 0x20 ;Set Upper bound
+    ADDWF PREVIOUSPOSITION, 0 ;Add tolerance
+    SUBWF CURRENTPOSITION, 0 ;Compare
+    BTFSC STATUS, 0 ;Is Previous more than Current?
+    BSF TESTBITS, 0 ;NO, LESS THAN OR EQUAL TO
+
+    BTFSC TESTBITS, 0 ;Is previous less than or equal to current?
+    BCF PORTB, 0 ;Yes it is, Retract
+    BTFSC TESTBITS, 1 ;Is previous more than current
+    BSF PORTB, 0 ;Yes it is, Extend
+    ;It is within acceptable range, do nothing
+
+EndOfMain:
+    CLRF TESTBITS ;Reset for next cycle
+    MOVF CURRENTPOSITION, 0 ;Load data
+    MOVWF PREVIOUSPOSITION ;Save data
     MOVLB 0x01 ;Bank 1
-    MOVF ADCHIGH, 0 ;Load data
-    MOVWF PORTB ;Display data
     BSF ADCON0, 1 ;Start ADC
     GOTO Main ;Do it again
+
+Reposition:
+    BTFSC PORTA, 1 ;Is up button pressed?
+    BCF PORTB, 0 ;Yes it is, Retract
+    BTFSC PORTA, 2 ;Is down button pressed?
+    BSF PORTB, 0 ;Yes it is, Extend
+    GOTO EndOfMain ;Clean up
+
 
 InterruptHandler:
     ;<editor-fold defaultstate="collapsed" desc="Save Bank & W">
@@ -9761,11 +9798,7 @@ ADCHandler:
     GOTO $-1 ;No keep waiting
     MOVF ADRESH, 0 ;Yes
     MOVLB 0x00 ;Bank 0
-    MOVWF ADCHIGH ;Save high
-    MOVLB 0x01 ;Bank 1
-    MOVF ADRESL, 0
-    MOVLB 0x00 ;Bank 0
-    MOVWF ADCLOW ;Save low
+    MOVWF CURRENTPOSITION ;Save high
     GOTO Restore ;Restore W and Bank
     ;</editor-fold>
 
