@@ -1,5 +1,5 @@
 ;Brandon Barrera
-;Killdate Products?
+;Idaho State University
 ;Exo arm - Solenoid controller
 ;12/20/2025
 
