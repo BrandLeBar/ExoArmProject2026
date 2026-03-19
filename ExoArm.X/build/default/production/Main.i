@@ -9770,10 +9770,10 @@ Main:
 
     ;--------------- Maintain Position logic -------------------------------
     BTFSC TESTBITS, 0 ;Is previous less than or equal to current?
-    BCF PORTB, 0 ;Yes it is, Retract
+    GOTO Retract ;Yes it is, Retract
     BTFSC TESTBITS, 1 ;Is previous more than current
-    BSF PORTB, 0 ;Yes it is, Extend
-    ;It is within acceptable range, do nothing
+    GOTO Extend ;Yes it is, Extend
+    CLRF PORTB ;It is within acceptable range, Lock position
 
 EndOfMain:
     CLRF TESTBITS ;Reset for next cycle
@@ -9781,9 +9781,24 @@ EndOfMain:
     BSF ADCON0, 1 ;Start ADC
     GOTO Main ;Do it again
 
+;<editor-fold defaultstate="collapsed" desc="Extend: Controls Solenoids responsible for extending">
+Extend:
+    BCF PORTB, 2 ;Block Flow through Lock A
+    BSF PORTB, 0 ;Extend
+    BSF PORTB, 1 ;Allow Flow through Lock B
+    GOTO EndOfMain;</editor-fold>
+
+;<editor-fold defaultstate="collapsed" desc="Retract: Controls Solenoids responsible for retracting">
+Retract:
+    BCF PORTB, 1 ;Block Flow through Lock B
+    BCF PORTB, 0 ;Retract
+    BSF PORTB, 2 ;Allow Flow through Lock A
+    GOTO EndOfMain;</editor-fold>
 
 ;<editor-fold defaultstate="collapsed" desc="Reposition: Handles The Manual Extention/Retraction">
 Reposition:
+    BSF PORTB, 1 ;Unlock A
+    BSF PORTB, 2 ;Unlock B
     BTFSC PORTA, 1 ;Is up button pressed?
     BCF PORTB, 0 ;Yes it is, Retract
     BTFSC PORTA, 2 ;Is down button pressed?
@@ -9791,7 +9806,6 @@ Reposition:
     MOVF CURRENTPOSITION, 0 ;Load data
     MOVWF PREVIOUSPOSITION ;Save data
     GOTO EndOfMain ;Clean up;</editor-fold>
-
 
 InterruptHandler:
     ;<editor-fold defaultstate="collapsed" desc="Save Bank & W">

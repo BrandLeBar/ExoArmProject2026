@@ -12,7 +12,7 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $build/default/debug/Main.o
-code CODE 0 8 8 65 2 1
+code CODE 0 8 8 7B 2 1
 resetVect CODE 0 0 0 1 2 1
 isrVect CODE 0 4 4 1 2 1
 config CONFIG 4 8007 8007 2 2 1
@@ -60,10 +60,10 @@ BANK8 420-46F 1
 BANK9 4A0-4EF 1
 CONST 1-3 2
 CONST 5-7 2
-CONST 6D-3FFF 2
+CONST 83-3FFF 2
 ENTRY 1-3 2
 ENTRY 5-7 2
-ENTRY 6D-3FFF 2
+ENTRY 83-3FFF 2
 IDLOC 8000-8003 2
 SFR10 500-51F 1
 SFR11 580-59F 1
@@ -89,10 +89,10 @@ SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 CODE 1-3 2
 CODE 5-7 2
-CODE 6D-3FFF 2
+CODE 83-3FFF 2
 SFR0 2-7 1
 SFR0 A-F 1
-SFR2 100-11F 1
+SFR2 106-11F 1
 SFR3 180-19F 1
 SFR4 200-21F 1
 SFR5 280-29F 1
@@ -121,10 +121,10 @@ COMMON 70-7F 1
 EEDATA F000-F0FF 2
 STRCODE 1-3 2
 STRCODE 5-7 2
-STRCODE 6D-3FFF 2
+STRCODE 83-3FFF 2
 STRING 1-3 2
 STRING 5-7 2
-STRING 6D-3FFF 2
+STRING 83-3FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -192,56 +192,78 @@ F code CODE >64:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 38 code CODE >117:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 39 code CODE >118:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 3A code CODE >119:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-3B code CODE >122:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-3C code CODE >125:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-3D code CODE >126:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-3E code CODE >127:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-3F code CODE >128:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-40 code CODE >129:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+3B code CODE >120:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+3C code CODE >123:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+3D code CODE >127:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+3E code CODE >128:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+3F code CODE >129:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+40 code CODE >130:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 41 code CODE >131:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-42 code CODE >132:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-43 code CODE >133:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-44 code CODE >134:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-45 code CODE >135:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-46 code CODE >137:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-47 code CODE >138:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-48 code CODE >139:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-49 code CODE >140:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-4A code CODE >141:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-4B code CODE >143:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-4C code CODE >144:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-4D code CODE >145:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-4E code CODE >146:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+42 code CODE >134:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+43 code CODE >135:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+44 code CODE >136:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+45 code CODE >137:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+46 code CODE >138:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+47 code CODE >140:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+48 code CODE >141:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+49 code CODE >142:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+4A code CODE >143:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+4B code CODE >144:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+4C code CODE >147:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+4D code CODE >148:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+4E code CODE >149:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 4F code CODE >150:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 50 code CODE >151:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-51 code CODE >152:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-52 code CODE >153:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-53 code CODE >154:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-54 code CODE >155:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-55 code CODE >158:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-56 code CODE >159:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-57 code CODE >160:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-58 code CODE >161:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-59 code CODE >162:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-5A code CODE >167:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-5B code CODE >168:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-5C code CODE >169:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-5D code CODE >170:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-5E code CODE >171:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-5F code CODE >172:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+51 code CODE >153:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+52 code CODE >154:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+53 code CODE >155:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+54 code CODE >156:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+55 code CODE >157:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+56 code CODE >160:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+57 code CODE >161:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+58 code CODE >162:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+59 code CODE >163:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+5A code CODE >164:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+5B code CODE >167:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+5C code CODE >168:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+5D code CODE >169:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+5E code CODE >170:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+5F code CODE >174:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 60 code CODE >175:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 61 code CODE >176:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 62 code CODE >177:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-63 code CODE >178:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-64 code CODE >179:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+63 code CODE >181:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+64 code CODE >182:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 65 code CODE >183:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 66 code CODE >184:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-67 code CODE >185:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-68 code CODE >186:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-69 code CODE >187:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-6A code CODE >188:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-6B code CODE >189:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
-6C code CODE >190:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+67 code CODE >188:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+68 code CODE >189:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+69 code CODE >190:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+6A code CODE >191:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+6B code CODE >192:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+6C code CODE >193:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+6D code CODE >194:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+6E code CODE >195:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+6F code CODE >196:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+70 code CODE >200:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+71 code CODE >201:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+72 code CODE >202:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+73 code CODE >203:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+74 code CODE >204:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+75 code CODE >205:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+76 code CODE >208:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+77 code CODE >209:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+78 code CODE >210:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+79 code CODE >211:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+7A code CODE >212:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+7B code CODE >216:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+7C code CODE >217:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+7D code CODE >218:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+7E code CODE >219:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+7F code CODE >220:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+80 code CODE >221:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+81 code CODE >222:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
+82 code CODE >223:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -254,66 +276,66 @@ F code CODE >64:C:\Users\STEFY\ExoArm2026\ExoArm.X\Main.s
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-__Hspace_0 DA 0 ABS 0 - -
+__Hspace_0 106 0 ABS 0 - -
 __Hspace_1 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 10010 0 ABS 0 - -
 __HisrVect A 0 CODE 0 isrVect -
-__Hudata_bank0 DA 0 ABS 0 udata_bank0 -
-__Hudata_bank1 DA 0 ABS 0 udata_bank1 -
-__Hudata_bank2 DA 0 ABS 0 udata_bank2 -
-__Hudata_bank3 DA 0 ABS 0 udata_bank3 -
-__Hudata_bank4 DA 0 ABS 0 udata_bank4 -
-__Hudata_bank5 DA 0 ABS 0 udata_bank5 -
-__Hudata_bank6 DA 0 ABS 0 udata_bank6 -
-__Hudata_bank7 DA 0 ABS 0 udata_bank7 -
-__Hudata_bank8 DA 0 ABS 0 udata_bank8 -
-__Hudata_bank9 DA 0 ABS 0 udata_bank9 -
+__Hudata_bank0 106 0 ABS 0 udata_bank0 -
+__Hudata_bank1 106 0 ABS 0 udata_bank1 -
+__Hudata_bank2 106 0 ABS 0 udata_bank2 -
+__Hudata_bank3 106 0 ABS 0 udata_bank3 -
+__Hudata_bank4 106 0 ABS 0 udata_bank4 -
+__Hudata_bank5 106 0 ABS 0 udata_bank5 -
+__Hudata_bank6 106 0 ABS 0 udata_bank6 -
+__Hudata_bank7 106 0 ABS 0 udata_bank7 -
+__Hudata_bank8 106 0 ABS 0 udata_bank8 -
+__Hudata_bank9 106 0 ABS 0 udata_bank9 -
 __L__absolute__ 0 0 ABS 0 __absolute__ -
-__Hudata_bank10 DA 0 ABS 0 udata_bank10 -
-__Hudata_bank11 DA 0 ABS 0 udata_bank11 -
-__Hudata_bank12 DA 0 ABS 0 udata_bank12 -
-__Hudata_bank13 DA 0 ABS 0 udata_bank13 -
-__Hudata_bank14 DA 0 ABS 0 udata_bank14 -
-__Hudata_bank15 DA 0 ABS 0 udata_bank15 -
-__Hudata_bank16 DA 0 ABS 0 udata_bank16 -
-__Hudata_bank17 DA 0 ABS 0 udata_bank17 -
-__Hudata_bank18 DA 0 ABS 0 udata_bank18 -
-__Hudata_bank19 DA 0 ABS 0 udata_bank19 -
-__Hudata_bank20 DA 0 ABS 0 udata_bank20 -
-__Hudata_bank21 DA 0 ABS 0 udata_bank21 -
-__Hudata_bank22 DA 0 ABS 0 udata_bank22 -
-__Hudata_bank23 DA 0 ABS 0 udata_bank23 -
-__Hudata_bank24 DA 0 ABS 0 udata_bank24 -
-__Hudata_bank25 DA 0 ABS 0 udata_bank25 -
-__Hedata DA 0 ABS 0 edata -
-__Hudata DA 0 ABS 0 udata -
+__Hudata_bank10 106 0 ABS 0 udata_bank10 -
+__Hudata_bank11 106 0 ABS 0 udata_bank11 -
+__Hudata_bank12 106 0 ABS 0 udata_bank12 -
+__Hudata_bank13 106 0 ABS 0 udata_bank13 -
+__Hudata_bank14 106 0 ABS 0 udata_bank14 -
+__Hudata_bank15 106 0 ABS 0 udata_bank15 -
+__Hudata_bank16 106 0 ABS 0 udata_bank16 -
+__Hudata_bank17 106 0 ABS 0 udata_bank17 -
+__Hudata_bank18 106 0 ABS 0 udata_bank18 -
+__Hudata_bank19 106 0 ABS 0 udata_bank19 -
+__Hudata_bank20 106 0 ABS 0 udata_bank20 -
+__Hudata_bank21 106 0 ABS 0 udata_bank21 -
+__Hudata_bank22 106 0 ABS 0 udata_bank22 -
+__Hudata_bank23 106 0 ABS 0 udata_bank23 -
+__Hudata_bank24 106 0 ABS 0 udata_bank24 -
+__Hudata_bank25 106 0 ABS 0 udata_bank25 -
+__Hedata 106 0 ABS 0 edata -
+__Hudata 106 0 ABS 0 udata -
 __Hconfig 10012 0 CONFIG 4 config -
-__Ledata DA 0 ABS 0 edata -
-__Ludata DA 0 ABS 0 udata -
-__Hcode DA 0 CODE 0 code -
-__Hdata DA 0 ABS 0 data -
+__Ledata 106 0 ABS 0 edata -
+__Ludata 106 0 ABS 0 udata -
+__Hcode 106 0 CODE 0 code -
+__Hdata 106 0 ABS 0 data -
 __Lcode 10 0 CODE 0 code -
-__Ldata DA 0 ABS 0 data -
+__Ldata 106 0 ABS 0 data -
 __S0 0 0 ABS 0 - -
 __S1 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-__Ludata_bank10 DA 0 ABS 0 udata_bank10 -
-__Ludata_bank11 DA 0 ABS 0 udata_bank11 -
-__Ludata_bank12 DA 0 ABS 0 udata_bank12 -
-__Ludata_bank13 DA 0 ABS 0 udata_bank13 -
-__Ludata_bank14 DA 0 ABS 0 udata_bank14 -
-__Ludata_bank15 DA 0 ABS 0 udata_bank15 -
-__Ludata_bank16 DA 0 ABS 0 udata_bank16 -
-__Ludata_bank17 DA 0 ABS 0 udata_bank17 -
-__Ludata_bank18 DA 0 ABS 0 udata_bank18 -
-__Ludata_bank19 DA 0 ABS 0 udata_bank19 -
-__Ludata_bank20 DA 0 ABS 0 udata_bank20 -
-__Ludata_bank21 DA 0 ABS 0 udata_bank21 -
-__Ludata_bank22 DA 0 ABS 0 udata_bank22 -
-__Ludata_bank23 DA 0 ABS 0 udata_bank23 -
-__Ludata_bank24 DA 0 ABS 0 udata_bank24 -
-__Ludata_bank25 DA 0 ABS 0 udata_bank25 -
+__Ludata_bank10 106 0 ABS 0 udata_bank10 -
+__Ludata_bank11 106 0 ABS 0 udata_bank11 -
+__Ludata_bank12 106 0 ABS 0 udata_bank12 -
+__Ludata_bank13 106 0 ABS 0 udata_bank13 -
+__Ludata_bank14 106 0 ABS 0 udata_bank14 -
+__Ludata_bank15 106 0 ABS 0 udata_bank15 -
+__Ludata_bank16 106 0 ABS 0 udata_bank16 -
+__Ludata_bank17 106 0 ABS 0 udata_bank17 -
+__Ludata_bank18 106 0 ABS 0 udata_bank18 -
+__Ludata_bank19 106 0 ABS 0 udata_bank19 -
+__Ludata_bank20 106 0 ABS 0 udata_bank20 -
+__Ludata_bank21 106 0 ABS 0 udata_bank21 -
+__Ludata_bank22 106 0 ABS 0 udata_bank22 -
+__Ludata_bank23 106 0 ABS 0 udata_bank23 -
+__Ludata_bank24 106 0 ABS 0 udata_bank24 -
+__Ludata_bank25 106 0 ABS 0 udata_bank25 -
 __Lconfig 0 0 CONFIG 4 config -
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
@@ -321,20 +343,20 @@ __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
 __LisrVect 8 0 CODE 0 isrVect -
 __HresetVect 2 0 CODE 0 resetVect -
-__Ludata_bank0 DA 0 ABS 0 udata_bank0 -
-__Ludata_bank1 DA 0 ABS 0 udata_bank1 -
-__Ludata_bank2 DA 0 ABS 0 udata_bank2 -
-__Ludata_bank3 DA 0 ABS 0 udata_bank3 -
-__Ludata_bank4 DA 0 ABS 0 udata_bank4 -
-__Ludata_bank5 DA 0 ABS 0 udata_bank5 -
-__Ludata_bank6 DA 0 ABS 0 udata_bank6 -
-__Ludata_bank7 DA 0 ABS 0 udata_bank7 -
-__Ludata_bank8 DA 0 ABS 0 udata_bank8 -
-__Ludata_bank9 DA 0 ABS 0 udata_bank9 -
+__Ludata_bank0 106 0 ABS 0 udata_bank0 -
+__Ludata_bank1 106 0 ABS 0 udata_bank1 -
+__Ludata_bank2 106 0 ABS 0 udata_bank2 -
+__Ludata_bank3 106 0 ABS 0 udata_bank3 -
+__Ludata_bank4 106 0 ABS 0 udata_bank4 -
+__Ludata_bank5 106 0 ABS 0 udata_bank5 -
+__Ludata_bank6 106 0 ABS 0 udata_bank6 -
+__Ludata_bank7 106 0 ABS 0 udata_bank7 -
+__Ludata_bank8 106 0 ABS 0 udata_bank8 -
+__Ludata_bank9 106 0 ABS 0 udata_bank9 -
 __H__absolute__ 0 0 ABS 0 __absolute__ -
 __LresetVect 0 0 CODE 0 resetVect -
-__Hudata_shr DA 0 ABS 0 udata_shr -
-__Ludata_shr DA 0 ABS 0 udata_shr -
+__Hudata_shr 106 0 ABS 0 udata_shr -
+__Ludata_shr 106 0 ABS 0 udata_shr -
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -359,7 +381,7 @@ __Ludata_shr DA 0 ABS 0 udata_shr -
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-code 0 8 10 65 2
+code 0 8 10 7B 2
 resetVect 0 0 0 1 2
 isrVect 0 4 8 1 2
 # %NOTES Section

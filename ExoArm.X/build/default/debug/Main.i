@@ -9729,50 +9729,83 @@ Setup:
     MOVWF INTCON ;Configures Allowed interrupts, Globals & Preriphrials
     CLRF CURRENTPOSITION
     CLRF PREVIOUSPOSITION
+    CLRF TESTBITS
 
     ;----------------------------------------------------------
     GOTO Main ;End of Setup
 
 Main:
+    ;--------------- Up and Down Buttons -----------------------------------
     MOVLB 0x00 ;Bank 0
     BTFSC PORTA, 1 ;Is up button pressed?
     GOTO Reposition ;Yes
     BTFSC PORTA, 2 ;Is down button pressed?
     GOTO Reposition ;Yes
 
-    MOVLW 0x20 ;Set Lower bound
+    ;--------------- Under & Over flow management --------------------------
+    MOVLW 0x10 ;Tolerance
+    SUBWF PREVIOUSPOSITION, 0 ;Subtract previous from tolerance
+    MOVLW 0x10 ;Load tolerance's value
+    BTFSS STATUS, 0 ;Did equation cause an under-flow
+    ADDWF PREVIOUSPOSITION, 1 ;Add tolerance to avoid under-flow
+
+    MOVLW 0x10 ;Tolerance
+    ADDWF PREVIOUSPOSITION, 0 ;Add previous with tolerance
+    MOVLW 0x10 ;Load tolerance's value
+    BTFSC STATUS, 0 ;Did equation cause an over-flow
+    SUBWF PREVIOUSPOSITION, 1 ;Add tolerance to avoid over-flow
+
+    ;--------------- Upper & Lower bound logic -----------------------------
+    MOVLW 0x10 ;Set Lower bound
     SUBWF PREVIOUSPOSITION, 0 ;Subtract tolerance
     SUBWF CURRENTPOSITION, 0 ;Compare
     BTFSS STATUS, 0 ;Is Previous less than or equal to Current?
     BSF TESTBITS, 1 ;NO, MORE THAN
 
-    MOVLW 0x20 ;Set Upper bound
+    MOVLW 0x10 ;Set Upper bound
     ADDWF PREVIOUSPOSITION, 0 ;Add tolerance
     SUBWF CURRENTPOSITION, 0 ;Compare
     BTFSC STATUS, 0 ;Is Previous more than Current?
     BSF TESTBITS, 0 ;NO, LESS THAN OR EQUAL TO
 
+    ;--------------- Maintain Position logic -------------------------------
     BTFSC TESTBITS, 0 ;Is previous less than or equal to current?
-    BCF PORTB, 0 ;Yes it is, Retract
+    GOTO Retract ;Yes it is, Retract
     BTFSC TESTBITS, 1 ;Is previous more than current
-    BSF PORTB, 0 ;Yes it is, Extend
-    ;It is within acceptable range, do nothing
+    GOTO Extend ;Yes it is, Extend
+    CLRF PORTB ;It is within acceptable range, Lock position
 
 EndOfMain:
     CLRF TESTBITS ;Reset for next cycle
-    MOVF CURRENTPOSITION, 0 ;Load data
-    MOVWF PREVIOUSPOSITION ;Save data
     MOVLB 0x01 ;Bank 1
     BSF ADCON0, 1 ;Start ADC
     GOTO Main ;Do it again
 
+;<editor-fold defaultstate="collapsed" desc="Extend: Controls Solenoids responsible for extending">
+Extend:
+    BCF PORTB, 2 ;Block Flow through Lock A
+    BSF PORTB, 0 ;Extend
+    BSF PORTB, 1 ;Allow Flow through Lock B
+    GOTO EndOfMain;</editor-fold>
+
+;<editor-fold defaultstate="collapsed" desc="Retract: Controls Solenoids responsible for retracting">
+Retract:
+    BCF PORTB, 1 ;Block Flow through Lock B
+    BCF PORTB, 0 ;Retract
+    BSF PORTB, 2 ;Allow Flow through Lock A
+    GOTO EndOfMain;</editor-fold>
+
+;<editor-fold defaultstate="collapsed" desc="Reposition: Handles The Manual Extention/Retraction">
 Reposition:
+    BSF PORTB, 1 ;Unlock A
+    BSF PORTB, 2 ;Unlock B
     BTFSC PORTA, 1 ;Is up button pressed?
     BCF PORTB, 0 ;Yes it is, Retract
     BTFSC PORTA, 2 ;Is down button pressed?
     BSF PORTB, 0 ;Yes it is, Extend
-    GOTO EndOfMain ;Clean up
-
+    MOVF CURRENTPOSITION, 0 ;Load data
+    MOVWF PREVIOUSPOSITION ;Save data
+    GOTO EndOfMain ;Clean up;</editor-fold>
 
 InterruptHandler:
     ;<editor-fold defaultstate="collapsed" desc="Save Bank & W">
